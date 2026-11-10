@@ -1,0 +1,58 @@
+.cat-cabecera { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: center; margin-bottom: 22px; }
+.cat-cabecera p { margin-top: 6px; max-width: 64ch; }
+.cat-folio {
+  font-family: var(--display); font-weight: 800; font-size: 4.6rem; line-height: 0.8; letter-spacing: -0.06em;
+  color: var(--fucsia); font-variant-numeric: tabular-nums;
+}
+.cat-folio span { font-size: 0.34em; vertical-align: 1.6em; letter-spacing: 0; margin-right: 2px; color: var(--tinta-3); }
+@media (max-width: 700px) {
+  .cat-cabecera { grid-template-columns: auto minmax(0, 1fr); gap: 14px; }
+  .cat-folio { font-size: 3.4rem; }
+  .cat-ir { grid-column: 1 / -1; }
+}
+
+.paginas { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.pagina {
+  position: relative; display: flex; flex-direction: column; gap: 12px; padding: 12px 12px 14px;
+  background: var(--hoja); border: 1px solid var(--linea); border-radius: 4px 14px 14px 4px;
+  box-shadow: var(--sombra-hoja);
+}
+.pagina-destacada { grid-column: span 2; display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr auto; column-gap: 16px; }
+.pagina-destacada .muestra { grid-row: 1 / 3; aspect-ratio: auto; min-height: 220px; }
+.pagina-destacada .muestra-sigla { font-size: 3.6rem; }
+.pagina-destacada h3 { font-size: 1.3rem; }
+@media (max-width: 560px) {
+  .pagina-destacada { grid-column: auto; display: flex; }
+  .pagina-destacada .muestra { min-height: 0; aspect-ratio: 4 / 3; }
+}
+.pagina-num {
+  position: absolute; z-index: 1; top: 20px; left: 20px; padding: 2px 8px; border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92); color: var(--tinta); font-size: 0.74rem; font-weight: 700;
+}
+.pagina-texto { display: grid; gap: 4px; align-content: start; }
+.pagina-texto h3 { font-family: var(--texto); font-weight: 700; font-size: 0.98rem; letter-spacing: 0; line-height: 1.3; }
+.pagina-pie { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.precio { display: grid; line-height: 1.25; }
+.precio strong { font-size: 1.08rem; }
+.precio s { font-size: 0.8rem; color: var(--tinta-3); }
+.stock { font-size: 0.76rem; color: var(--jade); font-weight: 600; margin-top: 2px; }
+.stock-poco { color: var(--ambar); }
+.stock-no { color: var(--rojo); }
+
+.paso { display: inline-flex; align-items: center; border: 1px solid var(--linea-fuerte); border-radius: 999px; overflow: hidden; }
+.paso button { width: 32px; height: 32px; border: 0; background: var(--hoja); cursor: pointer; display: grid; place-items: center; }
+.paso button:hover:not(:disabled) { background: var(--fucsia-claro); color: var(--fucsia); }
+.paso button:disabled { opacity: 0.35; cursor: not-allowed; }
+.paso svg { width: 15px; height: 15px; }
+.paso span { min-width: 28px; text-align: center; font-weight: 700; }
+@media (max-width: 560px) {
+  .paginas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pagina { padding: 8px 8px 10px; gap: 8px; }
+  .pagina-destacada { grid-column: 1 / -1; }
+  .pagina-num { top: 14px; left: 14px; }
+  .pagina-texto h3 { font-size: 0.88rem; }
+  .pagina-texto .suave { display: none; }
+  .pagina-pie { flex-direction: column; align-items: stretch; }
+  .pagina-pie .btn, .pagina-pie .paso { align-self: stretch; justify-content: space-between; }
+  .muestra-sigla { font-size: 1.6rem; }
+}

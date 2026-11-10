@@ -1,0 +1,9 @@
+node_modules
+.next
+next-env.d.ts
+*.tsbuildinfo
+
+# base de datos local de desarrollo
+.data
+.env*.local
+.netlify

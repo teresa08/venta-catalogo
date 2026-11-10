@@ -1,0 +1,11 @@
+# Configuración de Wrangler solo para administrar la base de datos D1 (migraciones y consultas).
+# Uso desde esta carpeta:  npx wrangler d1 migrations apply venta-catalogo --remote
+name = "venta-catalogo-db"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "venta-catalogo"
+# Pega aquí el "database_id" que imprime: npx wrangler d1 create venta-catalogo
+database_id = "PEGAR_AQUI_EL_ID_DE_LA_BASE"
+migrations_dir = "migrations"

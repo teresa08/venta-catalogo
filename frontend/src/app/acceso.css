@@ -1,0 +1,44 @@
+.acceso { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); min-height: 100dvh; }
+
+.portada {
+  position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+  padding: clamp(24px, 4vw, 56px); background: var(--fucsia); color: #fff;
+}
+/* Lomo del catálogo impreso */
+.portada::after {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 18px;
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,.18) 0 2px, transparent 2px 7px), var(--fucsia-hondo);
+}
+.portada-cabeza { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+.portada-cabeza .marca-sello { background: #fff; color: var(--fucsia); }
+.portada-ahora { font-size: 0.95rem; opacity: 0.85; }
+.portada-numero {
+  font-family: var(--display); font-weight: 800; line-height: 0.8; letter-spacing: -0.06em;
+  font-size: clamp(9rem, 6rem + 14vw, 19rem); margin: 6px 0 14px -0.06em;
+  animation: hoja 0.7s cubic-bezier(.2,.7,.2,1) both;
+}
+.portada-numero span { font-size: 0.32em; letter-spacing: 0; vertical-align: 1.75em; margin-right: 0.08em; opacity: 0.75; }
+.portada h1 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem); font-weight: 700; max-width: 14ch; }
+.portada-fechas { margin-top: 12px; font-size: 1rem; opacity: 0.9; font-variant-numeric: tabular-nums; }
+.portada-pie { max-width: 40ch; opacity: 0.9; }
+@keyframes hoja { from { opacity: 0; transform: translateY(18px) rotate(-2deg); } }
+
+.formulario { display: grid; align-content: center; justify-items: center; gap: 28px; padding: 40px 24px; background: var(--hoja); }
+.formulario form, .demo { width: min(380px, 100%); display: grid; gap: 16px; }
+.formulario h2 { font-size: 1.7rem; }
+.error { background: var(--rojo-claro); color: var(--rojo); border-radius: var(--r-chico); padding: 10px 12px; font-size: 0.88rem; }
+.demo { gap: 8px; padding-top: 22px; border-top: 1px dashed var(--linea-fuerte); }
+.demo > p { font-size: 0.85rem; color: var(--tinta-3); }
+.demo-usuario {
+  display: grid; gap: 2px; text-align: left; padding: 12px 14px; border-radius: var(--r-medio);
+  border: 1px solid var(--linea); background: var(--papel); cursor: pointer;
+}
+.demo-usuario:hover { border-color: var(--fucsia); }
+.demo-usuario span { font-size: 0.83rem; color: var(--tinta-2); }
+
+@media (max-width: 820px) {
+  .acceso { grid-template-columns: 1fr; }
+  .portada { min-height: auto; gap: 20px; }
+  .portada-numero { font-size: 8.5rem; }
+  .portada-pie { display: none; }
+}

@@ -1,0 +1,15 @@
+# Netlify: frontend y API (Route Handlers de Next.js) se publican juntos.
+# Netlify detecta Next.js y convierte /api/* en funciones serverless automáticamente.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Variables que se configuran en Netlify (Site configuration → Environment variables), nunca en el repositorio:
+#   CLOUDFLARE_ACCOUNT_ID       ID de la cuenta de Cloudflare
+#   CLOUDFLARE_D1_DATABASE_ID   ID de la base D1 "venta-catalogo"
+#   CLOUDFLARE_API_TOKEN        token con permiso "D1: Edit"
+#   JWT_SECRET                  cadena aleatoria de 32 caracteres o más

@@ -1,0 +1,26 @@
+# Aplica las migraciones nuevas a Cloudflare D1 cuando cambian en main.
+# Requiere los secretos del repositorio CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID
+# (GitHub → Settings → Secrets and variables → Actions).
+name: Migraciones D1
+
+on:
+  push:
+    branches: [main]
+    paths: ["database/d1/migrations/**"]
+  workflow_dispatch:
+
+jobs:
+  migrar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: database/d1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npx --yes wrangler@4 d1 migrations apply venta-catalogo --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

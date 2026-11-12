@@ -6,7 +6,7 @@
 -- Fechas: texto ISO 8601 en hora local de Santo Domingo ("2026-10-21T08:12:00").
 -- =============================================================================
 
-PRAGMA foreign_keys = ON;
+-- D1 aplica las claves foráneas por defecto; el adaptador SQLite local las activa al abrir.
 
 -- Seguridad (CU010, CU015) ----------------------------------------------------
 CREATE TABLE rol (

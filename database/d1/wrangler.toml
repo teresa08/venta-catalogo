@@ -7,5 +7,5 @@ compatibility_date = "2026-10-01"
 binding = "DB"
 database_name = "venta-catalogo"
 # Pega aquí el "database_id" que imprime: npx wrangler d1 create venta-catalogo
-database_id = "PEGAR_AQUI_EL_ID_DE_LA_BASE"
+database_id = "49c746f3-0de2-44d3-834f-3745fba4fc70"
 migrations_dir = "migrations"

@@ -65,6 +65,7 @@ export default function Comisiones() {
 
         <section className="hoja hoja-pad pila" style={{ gap: 12 }}>
           <h2>Niveles de comisión</h2>
+          <div className="tabla-envoltura">
           <table className="tabla">
             <thead><tr><th>Nivel</th><th>Ventas de la campaña</th><th className="der">%</th></tr></thead>
             <tbody>
@@ -77,6 +78,7 @@ export default function Comisiones() {
               ))}
             </tbody>
           </table>
+          </div>
           <p className="suave" style={{ fontSize: "0.86rem" }}>Los pedidos cancelados no suman. Si un pedido cambia después del cálculo, recalcula antes de aprobar.</p>
         </section>
       </div>

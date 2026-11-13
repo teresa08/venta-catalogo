@@ -67,9 +67,9 @@ export default function Carrito() {
               const ex = existencias.find((e) => e.productoId === l.productoId);
               const disponible = ex ? ex.existencia - ex.reservado : 0;
               return (
-                <li key={l.productoId} style={{ display: "flex", gap: 14, alignItems: "center", padding: "14px 18px", borderBottom: "1px solid var(--linea)" }}>
+                <li key={l.productoId} className="linea-carrito">
                   <Muestra producto={l.producto} mini />
-                  <div style={{ flex: 1, minWidth: 0 }}>
+                  <div className="linea-info">
                     <p style={{ fontWeight: 600 }}>{l.producto.nombre}</p>
                     <p className="tenue cifra" style={{ fontSize: "0.82rem" }}>{rd(l.precio)} c/u</p>
                   </div>
@@ -78,7 +78,7 @@ export default function Carrito() {
                     <span className="cifra" style={{ minWidth: 26, textAlign: "center", fontWeight: 700 }}>{l.cantidad}</span>
                     <button className="btn btn-texto btn-chico" disabled={l.cantidad >= disponible} onClick={() => cambiarCantidad(l.productoId, l.cantidad + 1)} aria-label="Agregar uno"><span style={{ width: 14, display: "grid" }}><Icono nombre="mas" /></span></button>
                   </div>
-                  <strong className="cifra" style={{ minWidth: 110, textAlign: "right" }}>{rd(l.cantidad * l.precio)}</strong>
+                  <strong className="cifra linea-importe">{rd(l.cantidad * l.precio)}</strong>
                 </li>
               );
             })}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Public_Sans } from "next/font/google";
 import { StoreProvider } from "@/lib/store";
 import "./globals.css";
@@ -9,6 +9,13 @@ const texto = Public_Sans({ subsets: ["latin"], variable: "--font-texto" });
 export const metadata: Metadata = {
   title: "Venta por Catálogo",
   description: "Catálogo de campaña, pedidos, inventario y comisiones de la red de vendedoras.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#241b35",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

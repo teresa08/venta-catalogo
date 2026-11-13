@@ -137,7 +137,7 @@ function Pedidos() {
             </label>
           ) : (
             <div className="pila">
-              <div className="dos-col" style={{ gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: 16 }}>
+              <div className="dos-col dos-igual" style={{ gap: 16 }}>
                 <RutaPedido pedido={sel} />
                 <div className="pila" style={{ gap: 6, alignContent: "start", fontSize: "0.88rem" }}>
                   <p className="suave">{sel.factura ? `Factura ${sel.factura.numero}, ${fechaHora(sel.factura.fecha)}.` : "Aún sin factura."}</p>

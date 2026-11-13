@@ -29,7 +29,7 @@ export default function Campanas() {
           const ps = pedidos.filter((p) => p.campanaId === c.id && p.estado !== "CANCELADO");
           const [texto, tipo] = etiqueta[c.estado];
           return (
-            <li key={c.id} className="hoja" style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr) auto", gap: "12px 22px", alignItems: "center", padding: "18px 22px", borderLeft: c.estado === "PUBLICADA" ? "4px solid var(--fucsia)" : undefined }}>
+            <li key={c.id} className="hoja campana-fila" style={{ borderLeft: c.estado === "PUBLICADA" ? "4px solid var(--fucsia)" : undefined }}>
               <span className="cifra" style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "2.6rem", lineHeight: 1, letterSpacing: "-0.05em", color: c.estado === "PUBLICADA" ? "var(--fucsia)" : "var(--tinta-3)", minWidth: 64 }}>
                 {c.numero}
               </span>
@@ -43,7 +43,7 @@ export default function Campanas() {
                   {c.estado !== "BORRADOR" && ` ${ps.length} pedidos por ${rd(ps.reduce((s, p) => s + subtotalPedido(p), 0))}.`}
                 </p>
               </div>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div className="campana-acciones">
                 {c.estado === "BORRADOR" && <button className="btn btn-primario" onClick={() => setPublicar(c.id)}>Publicar catálogo</button>}
                 {c.estado === "PUBLICADA" && <button className="btn" onClick={() => cerrarCampana(c.id)}>Cerrar campaña</button>}
               </div>

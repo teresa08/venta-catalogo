@@ -138,7 +138,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .barra-movil, .tabs-movil { display: none; }
 
 @media (max-width: 860px) {
-  .panel { grid-template-columns: 1fr; }
+  .panel { grid-template-columns: minmax(0, 1fr); }
   .lateral { display: none; }
   .barra-movil {
     display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -165,7 +165,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hoja-titulo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--linea); }
 .pila { display: grid; gap: 20px; }
 .dos-col { display: grid; gap: 20px; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
-@media (max-width: 1080px) { .dos-col { grid-template-columns: 1fr; } }
+@media (max-width: 1080px) { .dos-col { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Tablas ---------- */
 .tabla-envoltura { overflow-x: auto; }
@@ -279,3 +279,69 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 560px) { .barras li { grid-template-columns: 1fr auto; } .barras-pista { grid-column: 1 / -1; grid-row: 2; } }
 .tabla td.cifra, .tabla td.der, .tabla .nowrap { white-space: nowrap; }
 .tabla button { white-space: nowrap; }
+
+/* ---------- Responsivo: bloques que antes usaban estilos en línea ---------- */
+html { -webkit-text-size-adjust: 100%; }
+img, svg, video { max-width: 100%; }
+.dos-igual { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .dos-igual { grid-template-columns: minmax(0, 1fr); } }
+.select { max-width: 100%; }
+
+.campana-fila {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px 22px; align-items: center; padding: 18px 22px;
+}
+.campana-acciones { display: flex; gap: 8px; flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .campana-fila { grid-template-columns: auto minmax(0, 1fr); padding: 16px; }
+  .campana-acciones { grid-column: 1 / -1; }
+  .campana-acciones .btn { flex: 1; }
+}
+
+.linea-carrito { display: flex; gap: 14px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--linea); }
+.linea-info { flex: 1; min-width: 0; }
+.linea-importe { min-width: 110px; text-align: right; }
+@media (max-width: 560px) {
+  .linea-carrito { flex-wrap: wrap; gap: 10px 12px; padding: 12px 14px; }
+  .linea-info { flex: 1 1 calc(100% - 60px); }
+  .linea-importe { min-width: 0; margin-left: auto; }
+}
+
+/* ---------- Responsivo: teléfono y tableta ---------- */
+@media (max-width: 860px) {
+  /* 16px evita que iOS haga zoom al enfocar un campo */
+  .input, .select, .textarea { font-size: 16px; min-height: 44px; }
+  .btn { min-height: 42px; }
+  .btn-chico { min-height: 36px; }
+  .chip { padding: 8px 14px; }
+  .tabs-movil a { min-height: 48px; }
+  .barra-movil { padding-top: max(10px, env(safe-area-inset-top)); }
+}
+@media (max-width: 560px) {
+  body { font-size: 14.5px; }
+  .contenido { padding: 18px 14px 96px; }
+  .cabecera { margin-bottom: 18px; }
+  .cabecera-acciones { width: 100%; }
+  .cabecera-acciones .btn { flex: 1; }
+  .hoja-pad { padding: 16px; }
+  .hoja-titulo { padding: 14px 16px; flex-wrap: wrap; }
+  .tabla th, .tabla td { padding: 9px 10px; }
+  .filtros .input, .filtros .select { flex: 1 1 100%; width: 100%; }
+  .resumen > div { padding: 12px 14px; }
+  .resumen dd { font-size: 1.2rem; }
+  .totales { justify-items: stretch; }
+  .totales > div { grid-template-columns: 1fr auto; }
+  .velo { padding: 0; align-items: end; }
+  .dialogo, .dialogo-ancho { width: 100%; max-height: 92dvh; border-radius: 16px 16px 0 0; }
+  .dialogo header { padding: 16px 16px 0; }
+  .dialogo .cuerpo { padding: 14px 16px; }
+  .dialogo footer { padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); }
+  .dialogo footer .btn { flex: 1; }
+  .aviso { max-width: calc(100vw - 24px); text-align: center; white-space: normal; border-radius: 14px; }
+}
+@media (min-width: 861px) and (max-width: 1100px) {
+  .panel { grid-template-columns: 208px minmax(0, 1fr); }
+  .lateral { padding: 18px 12px; }
+}
+@media (min-width: 1600px) {
+  .contenido { max-width: 1500px; }
+}

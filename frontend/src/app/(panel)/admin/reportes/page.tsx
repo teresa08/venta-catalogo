@@ -70,7 +70,7 @@ export default function Reportes() {
         <div><dt>Pedido promedio</dt><dd>{rd(ps.length ? ventas / ps.length : 0)}</dd></div>
       </dl>
 
-      <div className="dos-col" style={{ gridTemplateColumns: "1fr 1fr" }}>
+      <div className="dos-col dos-igual">
         <section className="hoja hoja-pad pila" style={{ gap: 14 }}>
           <h2>Ventas por categoría</h2>
           <Barras datos={porCategoria} formato={rd} detalle={(d) => `${d.etiqueta}: ${rd(d.valor)}, ${((d.valor / ventas) * 100).toFixed(1)} % del total`} />

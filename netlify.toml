@@ -2,6 +2,11 @@
 # Netlify detecta Next.js y convierte /api/* en funciones serverless automáticamente.
 [build]
   base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
   NODE_VERSION = "22"
